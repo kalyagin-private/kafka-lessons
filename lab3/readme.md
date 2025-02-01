@@ -59,3 +59,7 @@ curl -X POST -H "Content-Type:application/json" --data @prometheus-metrics/confi
 | Поле 1 | 1000           | 184000     | 1000      | 19к             |
 
 
+# Лог с Debezium
+
+Лги с запуском дебещиума в файле - logs_debezium.log
+
