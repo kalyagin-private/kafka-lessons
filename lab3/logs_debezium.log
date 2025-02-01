@@ -1,0 +1,420 @@
+[2025-01-27 15:16:45,739] INFO Loading the custom source info struct maker plugin: io.debezium.connector.postgresql.PostgresSourceInfoStructMaker (io.debezium.config.CommonConnectorConfig)
+[2025-01-27 15:16:46,361] INFO Successfully tested connection for jdbc:postgresql://postgres-debezium:5432/postgres with user 'postgres' (io.debezium.connector.postgresql.PostgresConnector)
+[2025-01-27 15:16:46,387] INFO Connection gracefully closed (io.debezium.jdbc.JdbcConnection)
+[2025-01-27 15:16:46,395] INFO AbstractConfig values: 
+ (org.apache.kafka.common.config.AbstractConfig)
+[2025-01-27 15:16:46,434] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Connector reg-postgres config updated (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,437] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Rebalance started (org.apache.kafka.connect.runtime.distributed.WorkerCoordinator)
+[2025-01-27 15:16:46,437] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] (Re-)joining group (org.apache.kafka.connect.runtime.distributed.WorkerCoordinator)
+[2025-01-27 15:16:46,454] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Successfully joined group with generation Generation{generationId=2, memberId='connect-kafka-connect:8083-7dd38621-05cc-4b22-bb09-73f0f395e7e6', protocol='sessioned'} (org.apache.kafka.connect.runtime.distributed.WorkerCoordinator)
+[2025-01-27 15:16:46,487] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Successfully synced group in generation Generation{generationId=2, memberId='connect-kafka-connect:8083-7dd38621-05cc-4b22-bb09-73f0f395e7e6', protocol='sessioned'} (org.apache.kafka.connect.runtime.distributed.WorkerCoordinator)
+[2025-01-27 15:16:46,488] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Joined group at generation 2 with protocol version 2 and got assignment: Assignment{error=0, leader='connect-kafka-connect:8083-7dd38621-05cc-4b22-bb09-73f0f395e7e6', leaderUrl='http://kafka-connect:8083/', offset=2, connectorIds=[reg-postgres], taskIds=[], revokedConnectorIds=[], revokedTaskIds=[], delay=0} with rebalance delay: 0 (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,489] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Starting connectors and tasks using config offset 2 (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,505] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Starting connector reg-postgres (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,516] INFO Creating connector reg-postgres of type io.debezium.connector.postgresql.PostgresConnector (org.apache.kafka.connect.runtime.Worker)
+[2025-01-27 15:16:46,517] INFO SourceConnectorConfig values: 
+        config.action.reload = restart
+        connector.class = io.debezium.connector.postgresql.PostgresConnector
+        errors.log.enable = false
+        errors.log.include.messages = false
+        errors.retry.delay.max.ms = 60000
+        errors.retry.timeout = 0
+        errors.tolerance = none
+        exactly.once.support = requested
+        header.converter = null
+        key.converter = null
+        name = reg-postgres
+        offsets.storage.topic = null
+        predicates = []
+        tasks.max = 1
+        topic.creation.groups = []
+        transaction.boundary = poll
+        transaction.boundary.interval.ms = null
+        transforms = []
+        value.converter = null
+ (org.apache.kafka.connect.runtime.SourceConnectorConfig)
+[2025-01-27 15:16:46,520] INFO EnrichedConnectorConfig values: 
+        config.action.reload = restart
+        connector.class = io.debezium.connector.postgresql.PostgresConnector
+        errors.log.enable = false
+        errors.log.include.messages = false
+        errors.retry.delay.max.ms = 60000
+        errors.retry.timeout = 0
+        errors.tolerance = none
+        exactly.once.support = requested
+        header.converter = null
+        key.converter = null
+        name = reg-postgres
+        offsets.storage.topic = null
+        predicates = []
+        tasks.max = 1
+        topic.creation.groups = []
+        transaction.boundary = poll
+        transaction.boundary.interval.ms = null
+        transforms = []
+        value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig)
+[2025-01-27 15:16:46,537] INFO Instantiated connector reg-postgres with version 2.5.4.Final of type class io.debezium.connector.postgresql.PostgresConnector (org.apache.kafka.connect.runtime.Worker)
+[2025-01-27 15:16:46,539] INFO Finished creating connector reg-postgres (org.apache.kafka.connect.runtime.Worker)
+[2025-01-27 15:16:46,540] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Finished starting connectors and tasks (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,559] INFO SourceConnectorConfig values: 
+        config.action.reload = restart
+        connector.class = io.debezium.connector.postgresql.PostgresConnector
+        errors.log.enable = false
+        errors.log.include.messages = false
+        errors.retry.delay.max.ms = 60000
+        errors.retry.timeout = 0
+        errors.tolerance = none
+        exactly.once.support = requested
+        header.converter = null
+        key.converter = null
+        name = reg-postgres
+        offsets.storage.topic = null
+        predicates = []
+        tasks.max = 1
+        topic.creation.groups = []
+        transaction.boundary = poll
+        transaction.boundary.interval.ms = null
+        transforms = []
+        value.converter = null
+ (org.apache.kafka.connect.runtime.SourceConnectorConfig)
+[2025-01-27 15:16:46,559] INFO EnrichedConnectorConfig values: 
+        config.action.reload = restart
+        connector.class = io.debezium.connector.postgresql.PostgresConnector
+        errors.log.enable = false
+        errors.log.include.messages = false
+        errors.retry.delay.max.ms = 60000
+        errors.retry.timeout = 0
+        errors.tolerance = none
+        exactly.once.support = requested
+        header.converter = null
+        key.converter = null
+        name = reg-postgres
+        offsets.storage.topic = null
+        predicates = []
+        tasks.max = 1
+        topic.creation.groups = []
+        transaction.boundary = poll
+        transaction.boundary.interval.ms = null
+        transforms = []
+        value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig)
+[2025-01-27 15:16:46,600] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Tasks [reg-postgres-0] configs updated (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,608] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Rebalance started (org.apache.kafka.connect.runtime.distributed.WorkerCoordinator)
+[2025-01-27 15:16:46,609] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] (Re-)joining group (org.apache.kafka.connect.runtime.distributed.WorkerCoordinator)
+[2025-01-27 15:16:46,613] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Successfully joined group with generation Generation{generationId=3, memberId='connect-kafka-connect:8083-7dd38621-05cc-4b22-bb09-73f0f395e7e6', protocol='sessioned'} (org.apache.kafka.connect.runtime.distributed.WorkerCoordinator)
+[2025-01-27 15:16:46,621] INFO 172.23.0.1 - - [27/Jan/2025:15:16:45 +0000] "PUT /connectors/reg-postgres/config HTTP/1.1" 201 562 "-" "curl/8.9.0" 1246 (org.apache.kafka.connect.runtime.rest.RestServer)
+[2025-01-27 15:16:46,640] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Successfully synced group in generation Generation{generationId=3, memberId='connect-kafka-connect:8083-7dd38621-05cc-4b22-bb09-73f0f395e7e6', protocol='sessioned'} (org.apache.kafka.connect.runtime.distributed.WorkerCoordinator)
+[2025-01-27 15:16:46,643] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Joined group at generation 3 with protocol version 2 and got assignment: Assignment{error=0, leader='connect-kafka-connect:8083-7dd38621-05cc-4b22-bb09-73f0f395e7e6', leaderUrl='http://kafka-connect:8083/', offset=4, connectorIds=[reg-postgres], taskIds=[reg-postgres-0], revokedConnectorIds=[], revokedTaskIds=[], delay=0} with rebalance delay: 0 (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,646] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Starting connectors and tasks using config offset 4 (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,648] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Starting task reg-postgres-0 (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,654] INFO Creating task reg-postgres-0 (org.apache.kafka.connect.runtime.Worker)
+[2025-01-27 15:16:46,658] INFO ConnectorConfig values: 
+        config.action.reload = restart
+        connector.class = io.debezium.connector.postgresql.PostgresConnector
+        errors.log.enable = false
+        errors.log.include.messages = false
+        errors.retry.delay.max.ms = 60000
+        errors.retry.timeout = 0
+        errors.tolerance = none
+        header.converter = null
+        key.converter = null
+        name = reg-postgres
+        predicates = []
+        tasks.max = 1
+        transforms = []
+        value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig)
+[2025-01-27 15:16:46,660] INFO EnrichedConnectorConfig values: 
+        config.action.reload = restart
+        connector.class = io.debezium.connector.postgresql.PostgresConnector
+        errors.log.enable = false
+        errors.log.include.messages = false
+        errors.retry.delay.max.ms = 60000
+        errors.retry.timeout = 0
+        errors.tolerance = none
+        header.converter = null
+        key.converter = null
+        name = reg-postgres
+        predicates = []
+        tasks.max = 1
+        transforms = []
+        value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig)
+[2025-01-27 15:16:46,680] INFO TaskConfig values: 
+        task.class = class io.debezium.connector.postgresql.PostgresConnectorTask
+ (org.apache.kafka.connect.runtime.TaskConfig)
+[2025-01-27 15:16:46,699] INFO Instantiated task reg-postgres-0 with version 2.5.4.Final of type io.debezium.connector.postgresql.PostgresConnectorTask (org.apache.kafka.connect.runtime.Worker)
+[2025-01-27 15:16:46,700] INFO StringConverterConfig values: 
+        converter.encoding = UTF-8
+        converter.type = key
+ (org.apache.kafka.connect.storage.StringConverterConfig)
+[2025-01-27 15:16:46,700] INFO Set up the key converter class org.apache.kafka.connect.storage.StringConverter for task reg-postgres-0 using the worker config (org.apache.kafka.connect.runtime.Worker)
+[2025-01-27 15:16:46,701] INFO StringConverterConfig values: 
+        converter.encoding = UTF-8
+        converter.type = value
+ (org.apache.kafka.connect.storage.StringConverterConfig)
+[2025-01-27 15:16:46,702] INFO Set up the value converter class org.apache.kafka.connect.storage.StringConverter for task reg-postgres-0 using the worker config (org.apache.kafka.connect.runtime.Worker)
+[2025-01-27 15:16:46,702] INFO Set up the header converter class org.apache.kafka.connect.storage.SimpleHeaderConverter for task reg-postgres-0 using the worker config (org.apache.kafka.connect.runtime.Worker)
+[2025-01-27 15:16:46,710] INFO SourceConnectorConfig values: 
+        config.action.reload = restart
+        connector.class = io.debezium.connector.postgresql.PostgresConnector
+        errors.log.enable = false
+        errors.log.include.messages = false
+        errors.retry.delay.max.ms = 60000
+        errors.retry.timeout = 0
+        errors.tolerance = none
+        exactly.once.support = requested
+        header.converter = null
+        key.converter = null
+        name = reg-postgres
+        offsets.storage.topic = null
+        predicates = []
+        tasks.max = 1
+        topic.creation.groups = []
+        transaction.boundary = poll
+        transaction.boundary.interval.ms = null
+        transforms = []
+        value.converter = null
+ (org.apache.kafka.connect.runtime.SourceConnectorConfig)
+[2025-01-27 15:16:46,710] INFO EnrichedConnectorConfig values: 
+        config.action.reload = restart
+        connector.class = io.debezium.connector.postgresql.PostgresConnector
+        errors.log.enable = false
+        errors.log.include.messages = false
+        errors.retry.delay.max.ms = 60000
+        errors.retry.timeout = 0
+        errors.tolerance = none
+        exactly.once.support = requested
+        header.converter = null
+        key.converter = null
+        name = reg-postgres
+        offsets.storage.topic = null
+        predicates = []
+        tasks.max = 1
+        topic.creation.groups = []
+        transaction.boundary = poll
+        transaction.boundary.interval.ms = null
+        transforms = []
+        value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig)
+[2025-01-27 15:16:46,711] INFO Initializing: org.apache.kafka.connect.runtime.TransformationChain{} (org.apache.kafka.connect.runtime.Worker)
+[2025-01-27 15:16:46,713] INFO ProducerConfig values: 
+        acks = -1
+        auto.include.jmx.reporter = true
+        batch.size = 16384
+        bootstrap.servers = [kafka:9092]
+        buffer.memory = 33554432
+        client.dns.lookup = use_all_dns_ips
+        client.id = connector-producer-reg-postgres-0
+        compression.type = none
+        connections.max.idle.ms = 540000
+        delivery.timeout.ms = 2147483647
+        enable.idempotence = false
+        enable.metrics.push = true
+        interceptor.classes = []
+        key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+        linger.ms = 0
+        max.block.ms = 9223372036854775807
+        max.in.flight.requests.per.connection = 1
+        max.request.size = 1048576
+        metadata.max.age.ms = 300000
+        metadata.max.idle.ms = 300000
+        metric.reporters = []
+        metrics.num.samples = 2
+        metrics.recording.level = INFO
+        metrics.sample.window.ms = 30000
+        partitioner.adaptive.partitioning.enable = true
+        partitioner.availability.timeout.ms = 0
+        partitioner.class = null
+        partitioner.ignore.keys = false
+        receive.buffer.bytes = 32768
+        reconnect.backoff.max.ms = 1000
+        reconnect.backoff.ms = 50
+        request.timeout.ms = 30000
+        retries = 2147483647
+        retry.backoff.max.ms = 1000
+        retry.backoff.ms = 100
+        sasl.client.callback.handler.class = null
+        sasl.jaas.config = null
+        sasl.kerberos.kinit.cmd = /usr/bin/kinit
+        sasl.kerberos.min.time.before.relogin = 60000
+        sasl.kerberos.service.name = null
+        sasl.kerberos.ticket.renew.jitter = 0.05
+        sasl.kerberos.ticket.renew.window.factor = 0.8
+        sasl.login.callback.handler.class = null
+        sasl.login.class = null
+        sasl.login.connect.timeout.ms = null
+        sasl.login.read.timeout.ms = null
+        sasl.login.refresh.buffer.seconds = 300
+        sasl.login.refresh.min.period.seconds = 60
+        sasl.login.refresh.window.factor = 0.8
+        sasl.login.refresh.window.jitter = 0.05
+        sasl.login.retry.backoff.max.ms = 10000
+        sasl.login.retry.backoff.ms = 100
+        sasl.mechanism = GSSAPI
+        sasl.oauthbearer.clock.skew.seconds = 30
+        sasl.oauthbearer.expected.audience = null
+        sasl.oauthbearer.expected.issuer = null
+        sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+        sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+        sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+        sasl.oauthbearer.jwks.endpoint.url = null
+        sasl.oauthbearer.scope.claim.name = scope
+        sasl.oauthbearer.sub.claim.name = sub
+        sasl.oauthbearer.token.endpoint.url = null
+        security.protocol = PLAINTEXT
+        security.providers = null
+        send.buffer.bytes = 131072
+        socket.connection.setup.timeout.max.ms = 30000
+        socket.connection.setup.timeout.ms = 10000
+        ssl.cipher.suites = null
+        ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+        ssl.endpoint.identification.algorithm = https
+        ssl.engine.factory.class = null
+        ssl.key.password = null
+        ssl.keymanager.algorithm = SunX509
+        ssl.keystore.certificate.chain = null
+        ssl.keystore.key = null
+        ssl.keystore.location = null
+        ssl.keystore.password = null
+        ssl.keystore.type = JKS
+        ssl.protocol = TLSv1.3
+        ssl.provider = null
+        ssl.secure.random.implementation = null
+        ssl.trustmanager.algorithm = PKIX
+        ssl.truststore.certificates = null
+        ssl.truststore.location = null
+        ssl.truststore.password = null
+        ssl.truststore.type = JKS
+        transaction.timeout.ms = 60000
+        transactional.id = null
+        value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2025-01-27 15:16:46,713] INFO initializing Kafka metrics collector (org.apache.kafka.common.telemetry.internals.KafkaMetricsCollector)
+[2025-01-27 15:16:46,721] INFO These configurations '[metrics.context.connect.kafka.cluster.id, metrics.context.connect.group.id]' were supplied but are not used yet. (org.apache.kafka.clients.producer.ProducerConfig)
+[2025-01-27 15:16:46,722] INFO Kafka version: 7.7.0-ccs (org.apache.kafka.common.utils.AppInfoParser)
+[2025-01-27 15:16:46,722] INFO Kafka commitId: 342a7370342e6bbcecbdf171dbe71cf87ce67c49 (org.apache.kafka.common.utils.AppInfoParser)
+[2025-01-27 15:16:46,722] INFO Kafka startTimeMs: 1737991006722 (org.apache.kafka.common.utils.AppInfoParser)
+[2025-01-27 15:16:46,728] INFO [Producer clientId=connector-producer-reg-postgres-0] Cluster ID: A7qTcWbSRseZSXStL8bLFA (org.apache.kafka.clients.Metadata)
+[2025-01-27 15:16:46,741] INFO [Worker clientId=connect-kafka-connect:8083, groupId=cdc-kafka-connect-group] Finished starting connectors and tasks (org.apache.kafka.connect.runtime.distributed.DistributedHerder)
+[2025-01-27 15:16:46,744] INFO Starting PostgresConnectorTask with configuration: (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,753] INFO    connector.class = io.debezium.connector.postgresql.PostgresConnector (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    publication.autocreate.mode = disabled (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    database.user = postgres (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    database.dbname = postgres (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    slot.name = test_cdc (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    incremental.snapshot.chunk.size = 16384 (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    tasks.max = 1 (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    publication.name = cdc (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    schema.include.list = inventory (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    database.port = 5432 (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    plugin.name = pgoutput (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    topic.prefix = cdc-test (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    task.class = io.debezium.connector.postgresql.PostgresConnectorTask (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    database.hostname = postgres-debezium (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    database.password = ******** (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    name = reg-postgres (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO    snapshot.mode = initial (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:46,754] INFO Loading the custom source info struct maker plugin: io.debezium.connector.postgresql.PostgresSourceInfoStructMaker (io.debezium.config.CommonConnectorConfig)
+[2025-01-27 15:16:46,758] INFO Loading the custom topic naming strategy plugin: io.debezium.schema.SchemaTopicNamingStrategy (io.debezium.config.CommonConnectorConfig)
+[2025-01-27 15:16:46,794] INFO Connection gracefully closed (io.debezium.jdbc.JdbcConnection)
+[2025-01-27 15:16:47,087] INFO No previous offsets found (io.debezium.connector.common.BaseSourceTask)
+[2025-01-27 15:16:47,180] INFO user 'postgres' connected to database 'postgres' on PostgreSQL 16.2 (Debian 16.2-1.pgdg110+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit with roles:
+        role 'pg_read_all_settings' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_database_owner' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_stat_scan_tables' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_checkpoint' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_write_server_files' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_use_reserved_connections' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_read_all_data' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_write_all_data' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_monitor' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_read_server_files' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_create_subscription' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_execute_server_program' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_read_all_stats' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'pg_signal_backend' [superuser: false, replication: false, inherit: true, create role: false, create db: false, can log in: false]
+        role 'postgres' [superuser: true, replication: true, inherit: true, create role: true, create db: true, can log in: true] (io.debezium.connector.postgresql.PostgresConnectorTask)
+[2025-01-27 15:16:47,200] INFO Obtained valid replication slot ReplicationSlot [active=false, latestFlushedLsn=LSN{0/20F6B60}, catalogXmin=776] (io.debezium.connector.postgresql.connection.PostgresConnection)
+[2025-01-27 15:16:47,201] INFO No previous offset found (io.debezium.connector.postgresql.PostgresConnectorTask)
+[2025-01-27 15:16:47,266] INFO Requested thread factory for connector PostgresConnector, id = cdc-test named = SignalProcessor (io.debezium.util.Threads)
+[2025-01-27 15:16:47,332] INFO Requested thread factory for connector PostgresConnector, id = cdc-test named = change-event-source-coordinator (io.debezium.util.Threads)
+[2025-01-27 15:16:47,332] INFO Requested thread factory for connector PostgresConnector, id = cdc-test named = blocking-snapshot (io.debezium.util.Threads)
+[2025-01-27 15:16:47,358] INFO Creating thread debezium-postgresconnector-cdc-test-change-event-source-coordinator (io.debezium.util.Threads)
+[2025-01-27 15:16:47,359] INFO WorkerSourceTask{id=reg-postgres-0} Source task finished initialization and start (org.apache.kafka.connect.runtime.AbstractWorkerSourceTask)
+[2025-01-27 15:16:47,379] INFO Metrics registered (io.debezium.pipeline.ChangeEventSourceCoordinator)
+[2025-01-27 15:16:47,385] INFO Context created (io.debezium.pipeline.ChangeEventSourceCoordinator)
+[2025-01-27 15:16:47,408] INFO Taking initial snapshot for new datasource (io.debezium.connector.postgresql.snapshot.InitialSnapshotter)
+[2025-01-27 15:16:47,409] INFO According to the connector configuration data will be snapshotted (io.debezium.connector.postgresql.PostgresSnapshotChangeEventSource)
+[2025-01-27 15:16:47,423] INFO Snapshot step 1 - Preparing (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,563] INFO Snapshot step 2 - Determining captured tables (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,571] INFO Adding table inventory.geom to the list of capture schema tables (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,571] INFO Adding table inventory.products_on_hand to the list of capture schema tables (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,571] INFO Adding table inventory.customers to the list of capture schema tables (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,571] INFO Adding table inventory.orders to the list of capture schema tables (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,571] INFO Adding table inventory.products to the list of capture schema tables (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,576] INFO Created connection pool with 1 threads (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,577] INFO Snapshot step 3 - Locking captured tables [inventory.customers, inventory.geom, inventory.orders, inventory.products, inventory.products_on_hand] (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,577] INFO Snapshot step 4 - Determining snapshot offset (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,581] INFO Creating initial offset context (io.debezium.connector.postgresql.PostgresOffsetContext)
+[2025-01-27 15:16:47,588] INFO Read xlogStart at 'LSN{0/20F6B98}' from transaction '776' (io.debezium.connector.postgresql.PostgresOffsetContext)
+[2025-01-27 15:16:47,608] INFO Read xlogStart at 'LSN{0/20F6B98}' from transaction '776' (io.debezium.connector.postgresql.PostgresSnapshotChangeEventSource)
+[2025-01-27 15:16:47,609] INFO Snapshot step 5 - Reading structure of captured tables (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,609] INFO Reading structure of schema 'inventory' of catalog 'postgres' (io.debezium.connector.postgresql.PostgresSnapshotChangeEventSource)
+[2025-01-27 15:16:47,720] INFO Snapshot step 6 - Persisting schema history (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,721] INFO Snapshot step 7 - Snapshotting data (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,725] INFO Creating snapshot worker pool with 1 worker thread(s) (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,746] INFO For table 'inventory.customers' using select statement: 'SELECT "id", "first_name", "last_name", "email" FROM "inventory"."customers"' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,746] INFO For table 'inventory.geom' using select statement: 'SELECT "id", "g", "h" FROM "inventory"."geom"' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,747] INFO For table 'inventory.orders' using select statement: 'SELECT "id", "order_date", "purchaser", "quantity", "product_id" FROM "inventory"."orders"' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,747] INFO For table 'inventory.products' using select statement: 'SELECT "id", "name", "description", "weight" FROM "inventory"."products"' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,747] INFO For table 'inventory.products_on_hand' using select statement: 'SELECT "product_id", "quantity" FROM "inventory"."products_on_hand"' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,758] INFO Exporting data from table 'inventory.customers' (1 of 5 tables) (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,812] INFO   Finished exporting 4 records for table 'inventory.customers' (1 of 5 tables); total duration '00:00:00.054' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,815] INFO Exporting data from table 'inventory.geom' (2 of 5 tables) (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,853] INFO   Finished exporting 3 records for table 'inventory.geom' (2 of 5 tables); total duration '00:00:00.038' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,854] INFO Exporting data from table 'inventory.orders' (3 of 5 tables) (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,868] INFO   Finished exporting 4 records for table 'inventory.orders' (3 of 5 tables); total duration '00:00:00.014' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,869] INFO Exporting data from table 'inventory.products' (4 of 5 tables) (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,883] INFO   Finished exporting 9 records for table 'inventory.products' (4 of 5 tables); total duration '00:00:00.015' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,884] INFO Exporting data from table 'inventory.products_on_hand' (5 of 5 tables) (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,895] INFO   Finished exporting 9 records for table 'inventory.products_on_hand' (5 of 5 tables); total duration '00:00:00.011' (io.debezium.relational.RelationalSnapshotChangeEventSource)
+[2025-01-27 15:16:47,900] INFO Snapshot - Final stage (io.debezium.pipeline.source.AbstractSnapshotChangeEventSource)
+[2025-01-27 15:16:47,900] INFO Snapshot completed (io.debezium.pipeline.source.AbstractSnapshotChangeEventSource)
+[2025-01-27 15:16:47,928] WARN [Producer clientId=connector-producer-reg-postgres-0] Error while fetching metadata with correlation id 4 : {cdc-test.inventory.customers=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
+[2025-01-27 15:16:47,936] INFO Snapshot ended with SnapshotResult [status=COMPLETED, offset=PostgresOffsetContext [sourceInfoSchema=Schema{io.debezium.connector.postgresql.Source:STRUCT}, sourceInfo=source_info[server='cdc-test'db='postgres', lsn=LSN{0/20F6B98}, txId=776, timestamp=2025-01-27T15:16:47.426830Z, snapshot=FALSE, schema=inventory, table=products_on_hand], lastSnapshotRecord=true, lastCompletelyProcessedLsn=null, lastCommitLsn=null, streamingStoppingLsn=null, transactionContext=TransactionContext [currentTransactionId=null, perTableEventCount={}, totalEventCount=0], incrementalSnapshotContext=IncrementalSnapshotContext [windowOpened=false, chunkEndPosition=null, dataCollectionsToSnapshot=[], lastEventKeySent=null, maximumKey=null]]] (io.debezium.pipeline.ChangeEventSourceCoordinator)
+[2025-01-27 15:16:47,945] INFO Connected metrics set to 'true' (io.debezium.pipeline.ChangeEventSourceCoordinator)
+[2025-01-27 15:16:48,022] INFO REPLICA IDENTITY for 'inventory.geom' is 'DEFAULT'; UPDATE and DELETE events will contain previous values only for PK columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,024] INFO REPLICA IDENTITY for 'inventory.products_on_hand' is 'FULL'; UPDATE AND DELETE events will contain the previous values of all the columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,026] INFO REPLICA IDENTITY for 'inventory.customers' is 'FULL'; UPDATE AND DELETE events will contain the previous values of all the columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,028] INFO REPLICA IDENTITY for 'inventory.orders' is 'FULL'; UPDATE AND DELETE events will contain the previous values of all the columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,029] INFO REPLICA IDENTITY for 'inventory.products' is 'FULL'; UPDATE AND DELETE events will contain the previous values of all the columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,077] INFO SignalProcessor started. Scheduling it every 5000ms (io.debezium.pipeline.signal.SignalProcessor)
+[2025-01-27 15:16:48,078] INFO Creating thread debezium-postgresconnector-cdc-test-SignalProcessor (io.debezium.util.Threads)
+[2025-01-27 15:16:48,083] INFO Starting streaming (io.debezium.pipeline.ChangeEventSourceCoordinator)
+[2025-01-27 15:16:48,083] INFO Retrieved latest position from stored offset 'LSN{0/20F6B98}' (io.debezium.connector.postgresql.PostgresStreamingChangeEventSource)
+[2025-01-27 15:16:48,088] INFO Looking for WAL restart position for last commit LSN 'null' and last change LSN 'LSN{0/20F6B98}' (io.debezium.connector.postgresql.connection.WalPositionLocator)
+[2025-01-27 15:16:48,089] INFO Initializing PgOutput logical decoder publication (io.debezium.connector.postgresql.connection.PostgresReplicationConnection)
+[2025-01-27 15:16:48,104] WARN [Producer clientId=connector-producer-reg-postgres-0] Error while fetching metadata with correlation id 7 : {cdc-test.inventory.geom=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
+[2025-01-27 15:16:48,155] INFO Obtained valid replication slot ReplicationSlot [active=false, latestFlushedLsn=LSN{0/20F6B60}, catalogXmin=776] (io.debezium.connector.postgresql.connection.PostgresConnection)
+[2025-01-27 15:16:48,156] INFO Connection gracefully closed (io.debezium.jdbc.JdbcConnection)
+[2025-01-27 15:16:48,195] INFO Requested thread factory for connector PostgresConnector, id = cdc-test named = keep-alive (io.debezium.util.Threads)
+[2025-01-27 15:16:48,196] INFO Creating thread debezium-postgresconnector-cdc-test-keep-alive (io.debezium.util.Threads)
+[2025-01-27 15:16:48,254] INFO REPLICA IDENTITY for 'inventory.geom' is 'DEFAULT'; UPDATE and DELETE events will contain previous values only for PK columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,256] INFO REPLICA IDENTITY for 'inventory.products_on_hand' is 'FULL'; UPDATE AND DELETE events will contain the previous values of all the columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,257] INFO REPLICA IDENTITY for 'inventory.customers' is 'FULL'; UPDATE AND DELETE events will contain the previous values of all the columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,261] INFO REPLICA IDENTITY for 'inventory.orders' is 'FULL'; UPDATE AND DELETE events will contain the previous values of all the columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,263] INFO REPLICA IDENTITY for 'inventory.products' is 'FULL'; UPDATE AND DELETE events will contain the previous values of all the columns (io.debezium.connector.postgresql.PostgresSchema)
+[2025-01-27 15:16:48,265] WARN [Producer clientId=connector-producer-reg-postgres-0] Error while fetching metadata with correlation id 11 : {cdc-test.inventory.orders=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
+[2025-01-27 15:16:48,285] INFO Searching for WAL resume position (io.debezium.connector.postgresql.PostgresStreamingChangeEventSource)
+[2025-01-27 15:16:48,398] WARN [Producer clientId=connector-producer-reg-postgres-0] Error while fetching metadata with correlation id 15 : {cdc-test.inventory.products=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
+[2025-01-27 15:16:49,077] WARN [Producer clientId=connector-producer-reg-postgres-0] Error while fetching metadata with correlation id 20 : {cdc-test.inventory.products_on_hand=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
+[2025-01-27 15:17:05,465] INFO 172.23.0.41 - - [27/Jan/2025:15:17:05 +0000] "GET /connectors HTTP/1.1" 200 16 "-" "ReactorNetty/1.1.10" 15 (org.apache.kafka.connect.runtime.rest.RestServer)
+[2025-01-27 15:17:05,665] INFO 172.23.0.41 - - [27/Jan/2025:15:17:05 +0000] "GET /connectors/reg-postgres HTTP/1.1" 200 599 "-" "ReactorNetty/1.1.10" 21 (org.apache.kafka.connect.runtime.rest.RestServer)
+[2025-01-27 15:17:05,668] INFO 172.23.0.41 - - [27/Jan/2025:15:17:05 +0000] "GET /connectors/reg-postgres/tasks HTTP/1.1" 200 628 "-" "ReactorNetty/1.1.10" 13 (org.apache.kafka.connect.runtime.rest.RestServer)
+[2025-01-27 15:17:05,676] INFO 172.23.0.41 - - [27/Jan/2025:15:17:05 +0000] "GET /connectors/reg-postgres/topics HTTP/1.1" 200 182 "-" "ReactorNetty/1.1.10" 22 (org.apache.kafka.connect.runtime.rest.RestServer)
+[2025-01-27 15:17:05,677] INFO 172.23.0.41 - - [27/Jan/2025:15:17:05 +0000] "GET /connectors/reg-postgres/config HTTP/1.1" 200 502 "-" "ReactorNetty/1.1.10" 28 (org.apache.kafka.connect.runtime.rest.RestServer)
+[2025-01-27 15:17:05,895] INFO 172.23.0.41 - - [27/Jan/2025:15:17:05 +0000] "GET /connectors/reg-postgres/status HTTP/1.1" 200 174 "-" "ReactorNetty/1.1.10" 33 (org.apache.kafka.connect.runtime.rest.RestServer)
+[2025-01-27 15:17:05,945] INFO 172.23.0.41 - - [27/Jan/2025:15:17:05 +0000] "GET /connectors/reg-postgres/tasks/0/status HTTP/1.1" 200 59 "-" "ReactorNetty/1.1.10" 9 (org.apache.kafka.connect.runtime.rest.RestServer)
+[2025-01-27 15:17:46,738] INFO WorkerSourceTask{id=reg-postgres-0} Committing offsets for 29 acknowledged messages (org.apache.kafka.connect.runtime.WorkerSourceTask)

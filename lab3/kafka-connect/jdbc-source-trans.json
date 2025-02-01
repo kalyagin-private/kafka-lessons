@@ -1,0 +1,20 @@
+{
+"connector.class":"io.confluent.connect.jdbc.JdbcSourceConnector",
+"tasks.max":"1",
+"connection.url":"jdbc:postgresql://postgres-debezium:5432/postgres?user=postgres&password=postgres&useSSL=false",
+"connection.attempts":"5",
+"connection.backoff.ms":"50000",
+"mode":"timestamp",
+"timestamp.column.name":"updated_at",
+"topic.prefix":"psql-trans-",
+"table.whitelist": "public.users",
+"poll.interval.ms": "200",
+"batch.max.rows": 1000,
+"producer.override.linger.ms": 2000,
+"producer.override.batch.size": 184000,
+"db.timezone": "Europe/Samara",
+"transforms":"MaskField",
+"transforms.MaskField.type":"org.apache.kafka.connect.transforms.MaskField$Value",
+"transforms.MaskField.fields":"private_info",
+"transforms.MaskField.replacement":"CENSORED"
+}

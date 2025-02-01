@@ -1,0 +1,181 @@
+x-connect: &connect-vars
+  CONNECT_BOOTSTRAP_SERVERS: kafka:9092
+
+  CONNECT_GROUP_ID: cdc-kafka-connect-group
+  CONNECT_CONFIG_STORAGE_TOPIC: cdc-kafka-connect-group_config
+  CONNECT_OFFSET_STORAGE_TOPIC: cdc-kafka-connect-group_offsets
+  CONNECT_STATUS_STORAGE_TOPIC: cdc-kafka-connect-group_status
+  # Cannot be higher than the number of brokers in the Kafka cluster
+  CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+  CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+  CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+  # Defaults for all connectors
+  CONNECT_KEY_CONVERTER: org.apache.kafka.connect.storage.StringConverter
+  CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.storage.StringConverter
+  # Where Jib places classes
+  CONNECT_PLUGIN_PATH: /plugins,/usr/local/share/kafka/plugins,/usr/share/filestream-connectors
+  # Connect client overrides
+  CONNECT_TASK_SHUTDOWN_GRACEFUL_TIMEOUT_MS: 30000
+  CONNECT_OFFSET_FLUSH_INTERVAL_MS: 60000
+  # Connect consumer overrides
+  CONNECT_CONSUMER_MAX_POLL_RECORDS: 500
+  
+services:
+  zookeeper:
+    image: zookeeper:3.7
+    container_name: zookeeper
+    hostname: zookeeper
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.10
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+      
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    hostname: kafka
+    depends_on:
+      - zookeeper
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.20
+    ports:
+      - 29092:29092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  kafka-connect:
+    container_name: kafka-connect
+    image: confluentinc/cp-kafka-connect-base
+    hostname: kafka-connect
+    depends_on:
+      - zookeeper
+      - kafka
+      - postgres-debezium
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.30
+    environment:
+      <<: *connect-vars
+      CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081/'
+      KAFKA_JMX_PORT: '9875'
+      KAFKA_OPTS: "-javaagent:/opt/jmx_prometheus_javaagent-0.15.0.jar=9876:/opt/kafka-connect.yml"
+      CONNECT_CONFIG_PROVIDERS: "file"
+      CONNECT_CONFIG_PROVIDERS_FILE_CLASS: "org.apache.kafka.common.config.provider.FileConfigProvider"
+    ports:
+      - 8083:8083
+      - 9875:9875
+      - 9876:9876
+    volumes:
+      - ./plugins:/plugins
+      - ./kafka-connect/jmx_prometheus_javaagent-0.15.0.jar:/opt/jmx_prometheus_javaagent-0.15.0.jar
+      - ./kafka-connect/kafka-connect.yml:/opt/kafka-connect.yml
+
+  postgres-debezium:
+    hostname: postgres
+    container_name: postgres-debezium
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.40
+    image: quay.io/debezium/example-postgres:2.5
+    ports:
+     - 5432:5432
+    environment:
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=postgres
+
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 8080:8080
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.41      
+    environment:
+      KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_NAME: kafka-lab3
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_NAME: kafka-connect-lab3
+      KAFKA_CLUSTERS_0_KAFKACONNECT_0_ADDRESS: http://kafka-connect:8083
+
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry
+    hostname: schema-registry
+    container_name: schema-registry
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.42
+    depends_on:
+      - kafka
+    ports:
+      - "8081:8081"
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafka:9092'
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081/
+
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    hostname: prometheus
+    networks:
+      kafka-connect-network:
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.enable-lifecycle'
+    ports:
+      - 9090:9090
+
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    hostname: grafana
+    networks:
+      kafka-connect-network:
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/config.ini:/etc/grafana/config.ini
+
+  custom-kafka-connect:
+    build:
+      context: ./prometheus-metrics
+    hostname: custom-kafka-connect
+    networks:
+      kafka-connect-network:
+    ports:
+      - 8383:8383
+
+
+networks:
+  kafka-connect-network:
+    name: kafka-connect-network
+    ipam:
+      config:
+        - subnet: 172.23.0.0/24
+
+# volumes:
+#   db:
+#     driver: local
