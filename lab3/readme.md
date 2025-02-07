@@ -12,6 +12,7 @@
   - prometheus_metrics.py - основной модуль сервиса в рамках которого реализован вебсервер и несколькими endpoints
   - Dockerfile - для создания образа разраотанного сервиса, чтобы он разворачивался вместе со всеми компонентами
   - *.json - файлы с примерами из задания
+* metrics-producer - папка с продюсером для отправки кастомных метрик. Завернул в Docker и поднял в виде отдельно сервиса внутри docker-compose. Поднимается вместе со всеми компонентами и начинает слать рандомные метрики каждые 5 секунд.
 
 # Описание
 
@@ -95,22 +96,7 @@ $ curl localhost:8083/connector-plugins | jq
 ./deploy-jdbc-sink.sh
 ```
 
-Для начала отправки сообщений с метриками необходимо запустить producer_metrics.py
-В результате мы отправим несколько сообщений в топик metrics-producer для последующей обработки кансамером и отправкой в прометеус
-```shell
-$ python prometheus-metrics/producer_metrics.py
-Message "{"Alloc": {"Type": "gauge", "Name": "Alloc", "Description": "Alloc is bytes of allocated heap objects.", "Value": 25406900}, "FreeMemory": {"Type": "gauge", "Name": "FreeMemory", "Description": "RAM available for programs to allocate", "Value": 14021908462}, "PollCount": {"Type": "counter", "Name": "PollCount", "Description": "PollCount is quantity of metrics collection iteration.", "Value": 1}, "TotalMemory": {"Type": "gauge", "Name": "TotalMemory", "Description": "Total amount of RAM on this system", "Value": 8345511048}}" sending...
-Message "{"Alloc": {"Type": "gauge", "Name": "Alloc", "Description": "Alloc is bytes of allocated heap objects.", "Value": 34439890}, "FreeMemory": {"Type": "gauge", "Name": "FreeMemory", "Description": "RAM available for programs to allocate", "Value": 11871473182}, "PollCount": {"Type": "counter", "Name": "PollCount", "Description": "PollCount is quantity of metrics collection iteration.", "Value": 3}, "TotalMemory": {"Type": "gauge", "Name": "TotalMemory", "Description": "Total amount of RAM on this system", "Value": 10067911613}}" sending...
-Message "{"Alloc": {"Type": "gauge", "Name": "Alloc", "Description": "Alloc is bytes of allocated heap objects.", "Value": 39858699}, "FreeMemory": {"Type": "gauge", "Name": "FreeMemory", "Description": "RAM available for programs to allocate", "Value": 15708212496}, "PollCount": {"Type": "counter", "Name": "PollCount", "Description": "PollCount is quantity of metrics collection iteration.", "Value": 1}, "TotalMemory": {"Type": "gauge", "Name": "TotalMemory", "Description": "Total amount of RAM on this system", "Value": 11397058424}}" sending...
-Message "{"Alloc": {"Type": "gauge", "Name": "Alloc", "Description": "Alloc is bytes of allocated heap objects.", "Value": 31609960}, "FreeMemory": {"Type": "gauge", "Name": "FreeMemory", "Description": "RAM available for programs to allocate", "Value": 9642928506}, "PollCount": {"Type": "counter", "Name": "PollCount", "Description": "PollCount is quantity of metrics collection iteration.", "Value": 2}, "TotalMemory": {"Type": "gauge", "Name": "TotalMemory", "Description": "Total amount of RAM on this system", "Value": 11903018376}}" sending...
-Message "{"Alloc": {"Type": "gauge", "Name": "Alloc", "Description": "Alloc is bytes of allocated heap objects.", "Value": 22736434}, "FreeMemory": {"Type": "gauge", "Name": "FreeMemory", "Description": "RAM available for programs to allocate", "Value": 9047411041}, "PollCount": {"Type": "counter", "Name": "PollCount", "Description": "PollCount is quantity of metrics collection iteration.", "Value": 2}, "TotalMemory": {"Type": "gauge", "Name": "TotalMemory", "Description": "Total amount of RAM on this system", "Value": 11697398922}}" sending...
-Message "{"Alloc": {"Type": "gauge", "Name": "Alloc", "Description": "Alloc is bytes of allocated heap objects.", "Value": 21078182}, "FreeMemory": {"Type": "gauge", "Name": "FreeMemory", "Description": "RAM available for programs to allocate", "Value": 13321056464}, "PollCount": {"Type": "counter", "Name": "PollCount", "Description": "PollCount is quantity of metrics collection iteration.", "Value": 1}, "TotalMemory": {"Type": "gauge", "Name": "TotalMemory", "Description": "Total amount of RAM on this system", "Value": 15540771974}}" sending...
-Stopped.
-```
-
-
-
-Для запуска сервиса по выгрузки сообщений из Kafka в Prometheus
+Для запуска сервиса по выгрузки сообщений из Kafka в Prometheus - это если в руки запускать. 
 ```shell
 $ python prometheus-metrics/prometheus_metrics.py
 INFO:     Started server process [9272]
@@ -118,7 +104,11 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8383 (Press CTRL+C to quit)
 ```
+Приэтом сейчас это завернуто в Dockerfile в виде сервиса docker-compose поэтому нинужно ничего самому запускать для проверки задания.
 
+
+**!Данный пункт обязателн для проверки работоспособности!**
+Специально не стал при поднятии контейнеров делать данную операцию. Ждем поднятия всего,смотрим что поднялось и потом "тестируем" именно PUT/POST методы, именно поэтому считаю что данный кусок нужно именно в руки запускать
 
 Для настройки севрсиса необходимо отправить конфигурацию, котрая похожа на конфиг kafka-connect
 ```shell
@@ -129,6 +119,8 @@ curl -X POST -H "Content-Type:application/json" --data @prometheus-metrics/confi
 "{'name': 'prometheus-connector', 'topics': 'metrics-producer', 'group.id': 'group-metrics-1', 'confluent.topic.bootstrap.servers': 'kafka:9092', 'prometheus.listener.url': 'http://localhost:8383/metrics', 'reporter.result.topic.replication.factor': '1'}"
 ```
 где http://localhost:8383 - это адрес и порт разработанного сервиса. Данный сервис поднят тоже через docker compose, чтобы все сервисы работали в единой сети
+
+
 
 
 Для проверки того что сервис запущен и отдает метрики можно выполнить команду
