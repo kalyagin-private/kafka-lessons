@@ -163,11 +163,21 @@ services:
     build:
       context: ./prometheus-metrics
     hostname: custom-kafka-connect
+    depends_on:
+      - kafka
     networks:
       kafka-connect-network:
     ports:
       - 8383:8383
 
+  metrics-producer:
+    build:
+      context: ./metrics-producer
+    depends_on:
+      - kafka
+    hostname: metrics-producer
+    networks:
+      kafka-connect-network:
 
 networks:
   kafka-connect-network:
