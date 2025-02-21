@@ -1,0 +1,81 @@
+x-connect: &kafka-common-env
+    KAFKA_ENABLE_KRAFT: yes
+    ALLOW_PLAINTEXT_LISTENER: yes
+    CLUSTER_ID: practicum
+    KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT"
+    KAFKA_PROCESS_ROLES: broker,controller
+    KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+    KAFKA_CONTROLLER_QUORUM_VOTERS: 0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
+    KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
+
+services:
+
+  kafka-0:
+    container_name: kafka-0
+    image: confluentinc/cp-kafka:latest
+    restart: always
+    ports:
+      - "9094:9094"
+    environment:
+      <<: *kafka-common-env
+      KAFKA_NODE_ID: 0
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-0:9092,EXTERNAL://127.0.0.1:9094
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.94
+  
+  kafka-1:
+    container_name: kafka-1
+    image: confluentinc/cp-kafka:latest
+    restart: always
+    ports:
+      - "9095:9095"
+    environment:
+      <<: *kafka-common-env
+      KAFKA_NODE_ID: 1
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9095
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-1:9092,EXTERNAL://127.0.0.1:9095
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.95
+  
+  kafka-2:
+    container_name: kafka-2
+    image: confluentinc/cp-kafka:latest
+    restart: always
+    ports:
+      - "9096:9096"
+    environment:
+      <<: *kafka-common-env
+      KAFKA_NODE_ID: 2
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9096
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-2:9092,EXTERNAL://127.0.0.1:9096
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.96
+  
+
+  ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    restart: always
+    depends_on:
+      - kafka-0
+      - kafka-1
+      - kafka-2
+    ports:
+    - "8086:8080"
+    environment:
+      KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS: kafka-0:9092,kafka-1:9092,kafka-2:9092
+      KAFKA_CLUSTERS_0_NAME: kraft
+    networks:
+      kafka-connect-network:
+        ipv4_address: 172.23.0.86
+
+networks:
+  kafka-connect-network:
+    name: kafka-connect-network
+    ipam:
+      config:
+        - subnet: 172.23.0.0/24

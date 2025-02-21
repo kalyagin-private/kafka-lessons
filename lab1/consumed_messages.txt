@@ -1,0 +1,11 @@
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
+id: 1, name: test_message_kafka, count: 200
